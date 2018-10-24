@@ -23,8 +23,8 @@ addons:
 before_install:
   # Install and run Kafka with Zookeeper
   - curl -O http://apache.rediris.es/kafka/2.0.0/kafka_2.12-2.0.0.tgz
-  - tar -xzf kafka_2.11-2.0.0.tgz
-  - cd kafka_2.11-2.0.0
+  - tar -xzf kafka_2.12-2.0.0.tgz
+  - cd kafka_2.12-2.0.0
   - ./bin/zookeeper-server-start.sh config/zookeeper.properties
   - ./bin/kafka-server-start.sh config/server.properties
   # Build and install kdb+ to Apache Kafka adapter
