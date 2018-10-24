@@ -28,9 +28,9 @@ before_install:
   - ./bin/zookeeper-server-start.sh config/zookeeper.properties &
   - ./bin/kafka-server-start.sh config/server.properties &
   # Download other tools needed
-  - FILE="https://api.github.com/repos/finos/tooling/contents/archive.zip"
+  - export FILE="https://api.github.com/repos/finos/tooling/contents/archive.zip"
   - >
-    curl -O --header 'Authorization: token $GH_TOKEN'
+    curl --header 'Authorization: token $GH_TOKEN'
      --header 'Accept: application/vnd.github.v3.raw'
      --remote-name
      --location $FILE
