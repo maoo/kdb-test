@@ -18,7 +18,7 @@ addons:
     - librdkafka-dev
 
 before_install:
-  - curl https://www.apache.org/dyn/closer.cgi?path=/kafka/2.0.0/kafka_2.11-2.0.0.tgz
+  - curl http://apache.rediris.es/kafka/2.0.0/kafka_2.12-2.0.0.tgz
   - tar -xzf kafka_2.11-2.0.0.tgz
   - cd kafka_2.11-2.0.0
   - ./bin/zookeeper-server-start.sh config/zookeeper.properties
