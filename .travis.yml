@@ -41,9 +41,10 @@ before_install:
   - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
   # Download other tools needed
   - FILE="https://api.github.com/repos/finos/tooling/contents/archive.zip"
-  - curl --header 'Authorization: token $GH_TOKEN' \
-     --header 'Accept: application/vnd.github.v3.raw' \
-     --remote-name \
+  - >
+    curl --header 'Authorization: token $GH_TOKEN'
+     --header 'Accept: application/vnd.github.v3.raw'
+     --remote-name
      --location $FILE
   - unzip archive.zip
   - export PATH=$PATH:${PWD}/l64
