@@ -27,12 +27,6 @@ before_install:
   - cd kafka_2.12-2.0.0
   - ./bin/zookeeper-server-start.sh config/zookeeper.properties &
   - ./bin/kafka-server-start.sh config/server.properties &
-  # Build and install kdb+ to Apache Kafka adapter
-  - git clone https://github.com/KxSystems/kafka.git
-  - cd kafka
-  - make
-  - make install
-  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
   # Download other tools needed
   - FILE="https://api.github.com/repos/finos/tooling/contents/archive.zip"
   - >
@@ -42,6 +36,13 @@ before_install:
      --location $FILE
   - unzip archive.zip
   - export PATH=$PATH:${PWD}/l64
+  - export QHOME=${PWD}
+  # Build and install kdb+ to Apache Kafka adapter
+  - git clone https://github.com/KxSystems/kafka.git
+  - cd kafka
+  - make
+  - make install
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
 
 script:
   - echo "All DONE!! Current folder is ${PWD}"
