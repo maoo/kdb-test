@@ -14,10 +14,19 @@ addons:
     - zlib1g-dev
     - libssl-dev
     - libsasl2-dev
+    - gcc-multilib
+    - librdkafka-dev
 
 script:
-  - git clone https://github.com/edenhill/librdkafka.git
-  - cd librdkafka
-  - ./configure
+  # Build librdkafka
+  # - git clone https://github.com/edenhill/librdkafka.git
+  # - cd librdkafka
+  # - ./configure
+  # - make
+  # - sudo make install
+  #
+  # Build and install kdb+ to Apache Kafka adapter
+  - git clone https://github.com/KxSystems/kafka.git
   - make
-  - sudo make install
+  - make install
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
