@@ -1,3 +1,5 @@
+# Please define GH_TOKEN, to access FINOS tooling repo
+
 sudo: required
 
 language: c
@@ -16,6 +18,7 @@ addons:
     - libsasl2-dev
     - gcc-multilib
     - librdkafka-dev
+    - libc6-i386
 
 before_install:
   - curl http://apache.rediris.es/kafka/2.0.0/kafka_2.12-2.0.0.tgz
@@ -36,11 +39,18 @@ before_install:
   - make
   - make install
   - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
+  # Download other tools needed
+  - FILE="https://api.github.com/repos/finos/tooling/contents/archive.zip"
+  - curl --header 'Authorization: token $GH_TOKEN' \
+     --header 'Accept: application/vnd.github.v3.raw' \
+     --remote-name \
+     --location $FILE
+  - export PATH=$PATH:${PWD}/l64
 
 script:
-  - echo "All DONE!!"
+  - echo "All DONE!! Current folder is ${PWD}"
   # Start producer
-  # - q) \l test_producer.q
-  # - q) \t 1000
+  - q \l test_producer.q
+  - q \t 1000
   # Start consumer
-  # - q) \l test_consumer.q
+  - q \l test_consumer.q
