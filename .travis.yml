@@ -21,18 +21,12 @@ addons:
     - libc6-i386
 
 before_install:
-  - curl http://apache.rediris.es/kafka/2.0.0/kafka_2.12-2.0.0.tgz
+  # Install and run Kafka with Zookeeper
+  - curl -O http://apache.rediris.es/kafka/2.0.0/kafka_2.12-2.0.0.tgz
   - tar -xzf kafka_2.11-2.0.0.tgz
   - cd kafka_2.11-2.0.0
   - ./bin/zookeeper-server-start.sh config/zookeeper.properties
   - ./bin/kafka-server-start.sh config/server.properties
-  # Build librdkafka
-  # - git clone https://github.com/edenhill/librdkafka.git
-  # - cd librdkafka
-  # - ./configure
-  # - make
-  # - sudo make install
-  #
   # Build and install kdb+ to Apache Kafka adapter
   - git clone https://github.com/KxSystems/kafka.git
   - cd kafka
@@ -42,7 +36,7 @@ before_install:
   # Download other tools needed
   - FILE="https://api.github.com/repos/finos/tooling/contents/archive.zip"
   - >
-    curl --header 'Authorization: token $GH_TOKEN'
+    curl -O --header 'Authorization: token $GH_TOKEN'
      --header 'Accept: application/vnd.github.v3.raw'
      --remote-name
      --location $FILE
