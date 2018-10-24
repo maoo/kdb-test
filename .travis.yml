@@ -10,8 +10,8 @@ addons:
   apt:
     packages:
     - build-essential
-    - pthreads
-    - zlib-dev
+    - libpthread-stubs0-dev
+    - zlib1g-dev
     - libssl-dev
     - libsasl2-dev
 
