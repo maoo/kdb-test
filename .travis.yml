@@ -17,7 +17,12 @@ addons:
     - gcc-multilib
     - librdkafka-dev
 
-script:
+before_install:
+  - curl https://www.apache.org/dyn/closer.cgi?path=/kafka/2.0.0/kafka_2.11-2.0.0.tgz
+  - tar -xzf kafka_2.11-2.0.0.tgz
+  - cd kafka_2.11-2.0.0
+  - ./bin/zookeeper-server-start.sh config/zookeeper.properties
+  - ./bin/kafka-server-start.sh config/server.properties
   # Build librdkafka
   # - git clone https://github.com/edenhill/librdkafka.git
   # - cd librdkafka
@@ -27,6 +32,15 @@ script:
   #
   # Build and install kdb+ to Apache Kafka adapter
   - git clone https://github.com/KxSystems/kafka.git
+  - cd kafka
   - make
   - make install
   - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
+
+script:
+  - echo "All DONE!!"
+  # Start producer
+  # - q) \l test_producer.q
+  # - q) \t 1000
+  # Start consumer
+  # - q) \l test_consumer.q
