@@ -45,6 +45,7 @@ before_install:
      --header 'Accept: application/vnd.github.v3.raw' \
      --remote-name \
      --location $FILE
+  - unzip archive.zip
   - export PATH=$PATH:${PWD}/l64
 
 script:
