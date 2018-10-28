@@ -17,8 +17,7 @@ curl -O --header "Authorization: token $GH_TOKEN" \
 unzip archive.zip
 export PATH=$PATH:${PWD}/l64
 export QHOME=${PWD}
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
-echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=$HOME/lib:/usr/lib
 
 # Build and install kdb+ to Apache Kafka adapter
 git clone https://github.com/KxSystems/kafka.git
