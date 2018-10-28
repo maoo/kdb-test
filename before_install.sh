@@ -21,6 +21,12 @@ curl -O --header "Authorization: token $GH_TOKEN" \
 
 unzip archive.zip
 
+# Copy libs and include
+mkdir -p ${HOME}/lib
+sudo cp -Rf /usr/lib/* ${HOME}/lib/
+mkdir -p ${HOME}/include
+sudo cp -Rf /usr/include/* ${HOME}/include/
+
 # Build and install kdb+ to Apache Kafka adapter
 git clone https://github.com/KxSystems/kafka.git
 cd kafka
