@@ -21,7 +21,8 @@ addons:
     - libc6-i386
 
 before_install:
-  - sudo find / -name librdkafka.a
+  - sudo find / -type d -name "include"
+  - export KAFKA_ROOT=/usr
   - ./before_install.sh
 
 script:
