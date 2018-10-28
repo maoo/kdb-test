@@ -30,7 +30,7 @@ before_install:
   # Download other tools needed
   - export FILE="https://api.github.com/repos/finos/tooling/contents/archive.zip"
   - >
-    curl --header 'Authorization: token $GH_TOKEN' \
+    curl -O --header 'Authorization: token $GH_TOKEN' \
      --header 'Accept: application/vnd.github.v3.raw' \
      --remote-name \
      --location $FILE
