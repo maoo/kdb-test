@@ -4,9 +4,9 @@ sudo: required
 
 language: c
 
-compiler:
-  - gcc
-  - clang
+# compiler:
+#   - gcc
+#   - clang
 
 addons:
   apt:
@@ -22,7 +22,6 @@ addons:
 
 before_install:
   - sudo find / -type d -name "include"
-  - export KAFKA_ROOT=/usr
   - ./before_install.sh
 
 script:
