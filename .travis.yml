@@ -37,7 +37,7 @@ before_install:
   - unzip archive.zip
   - export PATH=$PATH:${PWD}/l64
   - export QHOME=${PWD}
-  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib:/usr/lib
   - echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
   # Build and install kdb+ to Apache Kafka adapter
   - git clone https://github.com/KxSystems/kafka.git
